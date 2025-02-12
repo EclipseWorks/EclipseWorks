@@ -4,27 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EclipseWorks - Roblox Developer</title>
-    <script src="https://js.stripe.com/v3/"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
             background-color: #0a0f1e;
             color: #ffffff;
         }
-        .product {
-            border: 1px solid #444;
+        header {
+            background: linear-gradient(90deg, #001f3f, #3a0ca3, #0fd3c9);
             padding: 20px;
-            margin: 20px auto;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .product {
             border-radius: 15px;
             background-color: #1a1f38;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
+            max-width: 350px;
+            text-align: left;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product-info {
+            padding: 20px;
         }
         .price {
             font-weight: bold;
             color: #0fd3c9;
+            font-size: 18px;
+            margin: 10px 0;
         }
         button {
             padding: 12px 24px;
@@ -36,6 +65,8 @@
             background: linear-gradient(45deg, #001f3f, #3a0ca3, #0fd3c9, #02075d);
             color: white;
             transition: 0.3s ease-in-out;
+            width: 100%;
+            margin-top: 10px;
         }
         button:hover {
             background: linear-gradient(45deg, #02075d, #0fd3c9, #3a0ca3, #001f3f);
@@ -44,56 +75,50 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to EclipseWorks</h1>
-    <p>Roblox developer specializing in Lua scripting and modeling for prison games, Police AI, and vehicle systems.</p>
+    <header>EclipseWorks - Roblox Development & Scripts</header>
     
-    <h2>Available Products</h2>
-    
-    <div class="product">
-        <h3>Prison Model</h3>
-        <p>A detailed prison model for your game.</p>
-        <p class="price">$12.50</p>
-        <button onclick="checkout(1250)">Buy Now</button>
-    </div>
-    
-    <div class="product">
-        <h3>Prison Door System</h3>
-        <p>Doors that open and close at specific times with sound effects.</p>
-        <p class="price">$8.00</p>
-        <button onclick="checkout(800)">Buy Now</button>
-    </div>
-    
-    <div class="product">
-        <h3>Police AI System</h3>
-        <p>Advanced AI with prediction algorithms, chase mechanics, wanted level system, barricades, and an elite police car.</p>
-        <p class="price">$89.99</p>
-        <button onclick="checkout(8999)">Buy Now</button>
-    </div>
+    <div class="container">
+        <h2>Premium Game Assets & AI Systems</h2>
+        <p>High-quality prison game assets, police AI, and advanced scripted models for Roblox developers.</p>
+        
+        <div class="product-grid">
+            <div class="product">
+                <img src="prison_model.jpg" alt="Prison Model">
+                <div class="product-info">
+                    <h3>Prison Model</h3>
+                    <p>A detailed and realistic prison model.</p>
+                    <p class="price">Price: 150R$</p>
+                    <a href="https://docs.google.com/forms/d/14ejk6n5BIfEvjysbx6BWZoPxXr3n24uwuT3nRJj6pPU/edit" target="_blank">
+                        <button>Purchase</button>
+                    </a>
+                </div>
+            </div>
 
-    <script>
-        var stripe = Stripe(sk_test_4eC39HqLyjWDarjtT1zdp7dc);
+            <div class="product">
+                <img src="prison_door.jpg" alt="Prison Door System">
+                <div class="product-info">
+                    <h3>Prison Door System</h3>
+                    <p>Doors that open and close at specific times with sound effects.</p>
+                    <p class="price">Price: 85R$</p>
+                    <a href="https://docs.google.com/forms/d/14ejk6n5BIfEvjysbx6BWZoPxXr3n24uwuT3nRJj6pPU/edit" target="_blank">
+                        <button>Purchase</button>
+                    </a>
+                </div>
+            </div>
 
-        function checkout(amount) {
-            fetch('/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ amount: amount })
-            })
-            .then(response => response.json())
-            .then(session => {
-                return stripe.redirectToCheckout({ sessionId: session.id });
-            })
-            .then(result => {
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
+            <div class="product">
+                <img src="police_ai.jpg" alt="Police AI System">
+                <div class="product-info">
+                    <h3>Police AI System</h3>
+                    <p>Advanced AI with prediction algorithms, chase mechanics, a wanted level system, barricades, and an elite police car.</p>
+                    <p class="price">Price: 885R$</p>
+                    <a href="https://docs.google.com/forms/d/14ejk6n5BIfEvjysbx6BWZoPxXr3n24uwuT3nRJj6pPU/edit" target="_blank">
+                        <button>Purchase</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
